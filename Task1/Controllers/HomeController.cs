@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using Task1.Models;
 
@@ -6,16 +7,21 @@ namespace Task1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        //private readonly ILogger<HomeController> _logger;
+        private IOptionsMonitor<JustMessage> _justMessageMonitor;
+        /*public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+        }*/
+
+        public HomeController(IOptionsMonitor<JustMessage> justMessageMonitor)
+        {
+            _justMessageMonitor = justMessageMonitor;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_justMessageMonitor.CurrentValue);
         }
 
         public IActionResult Privacy()

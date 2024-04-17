@@ -4,11 +4,12 @@ namespace Task1
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.Configure<JustMessage>(builder.Configuration.GetSection("MessageForView"));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
