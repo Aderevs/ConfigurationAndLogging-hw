@@ -23,3 +23,5 @@
 Завдання 5
 -
 Створити MVC додатків з одним поданням. Подання має відображати повідомлення, яке знаходиться у файлі конфігурації.
+
+This is literally the first task but there I used IOptionsMonitor, so here I just can use simple IOptions
