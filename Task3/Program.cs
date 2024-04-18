@@ -1,3 +1,6 @@
+using Serilog;
+using Serilog.Events;
+
 namespace Task3
 {
     public class Program
@@ -8,9 +11,10 @@ namespace Task3
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Logging.AddSeq();
             var app = builder.Build();
-            app.Use(async (context, next) =>
+            app.UseExceptionLogging();
+           /* app.Use(async (context, next) =>
             {
                 try
                 {
@@ -18,13 +22,14 @@ namespace Task3
                 }
                 catch (Exception ex)
                 {
+                    Log.Error(ex.ToString());
                     using (StreamWriter sw = new StreamWriter("Logs/log.txt", true))
                     {
                         sw.WriteLine($"ERROR: {DateTime.Now}");
                         sw.WriteLine(ex.ToString());
                     }
                 }
-            });
+            });*/
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
