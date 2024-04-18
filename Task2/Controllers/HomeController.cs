@@ -12,7 +12,7 @@ namespace Task2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IOptionsMonitor<SmtpConnectingInfo> _connectingMonitor;
+        private readonly IOptionsMonitor<SmtpConnectingInfo> _connectingMonitor;
 
         public HomeController(IOptionsMonitor<SmtpConnectingInfo> connecting, ILogger<HomeController> logger)
         {
